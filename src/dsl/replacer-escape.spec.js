@@ -3,24 +3,23 @@ import replacer from './replacer.dsl.js';
 
 
 // eslint-disable-next-line max-lines-per-function
-describe('replacer escapes', () => {
+describe('replacer replaces escapes', () => {
 
     const replace = replacer();
-    const SKIP = null;
 
-    it.skip.each([
-        // result, matched, directives, text
+    it.each([
+        // result, {dir, txt}
         [''],
         ['', null],
         ['', []],
         ['', {}],
-        ['fg.red', SKIP, '', 'fg.red'],
-        ['fg.red', SKIP, 'fg@.red', 'fg.red'],
-        ['\x1b[31m\x1b[0m', SKIP, 'fg.red', ''],
-        ['\x1b[31mfg.red\x1b[0m', SKIP, 'fg.red', 'fg.red'],
-        ['\x1b[31mfg.red\x1b[0m', SKIP, 'fg.red', 'before @:} after'],
-        // ['\x1b[44m blue background \x1b[0m', SKIP, ' bg.blue ', ' blue background '],
-        // ['\x1b[41m\x1b[33m red bg and yellow fg \x1b[0m', SKIP, ' bg.red + fg.yellow', ' red bg and yellow fg '],
+        ['fg.red', {dir: '', txt: 'fg.red'}],
+        ['fg.red', {dir: 'fg@.red', txt: 'fg.red'}],
+        ['\x1b[31m\x1b[0m', {dir: 'fg.red', txt: ''}],
+        ['\x1b[31mfg.red\x1b[0m', {dir: 'fg.red', txt: 'fg.red'}],
+        ['\x1b[31mbefore :} after\x1b[0m', {dir: 'fg.red', txt: 'before @:} after'}],
+        ['\x1b[31m{:{::::::}:}..++@@\x1b[0m', {dir: 'fg.red', txt: '@{:{:@::::@:}:}@..@++@@@'}],
+        ['\x1b[31m{: {: :: :: :} :} . . + + @ @\x1b[0m', {dir: 'fg.red', txt: '@{: {: @:: :: @:} :} @. . @+ + @@ @'}],
     ])(
         'into %p from %p, %p, %p',
         expect(replace).toMapExact,
