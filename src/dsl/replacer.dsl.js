@@ -1,32 +1,38 @@
+import rebus from '@me5on/rebus';
 import A from '../etc/ansi.const.js';
 import BOX from '../etc/box.const.js';
+import C from '../etc/general.const.js';
 import SYNTAX from '../etc/syntax.const.js';
+import cleanup from '../util/cleanup.util.js';
 import stringify from '../util/stringify.util.js';
 import compile from './compile.dsl.js';
 
 
 const {reset: RESET} = A.cc;
+const {or, cap} = rebus;
 
 
 const replacer = $ => {
 
     const box = $?.box ?? BOX;
     const syntax = $?.syntax ?? SYNTAX;
-    const {esc, end} = syntax;
+    const {esc, bgn, mid, end, and, dot} = syntax;
 
-    // text.replaceAll(re(syntax), replace)
+    const escaped = (
+        esc
+            ? rebus(C.gu, esc + cap(or(bgn, mid, end, and, dot)))
+            : ''
+    );
 
     // noinspection UnnecessaryLocalVariableJS
-    const replace = (
-        matched, directives, text,
-    ) => {
-        const compiled = compile({directives, box, syntax});
-        const replaced = stringify(text).replaceAll(esc + end, end);
-
+    const replace = (...$$) => {
+        const {dir, txt} = $$.pop() ?? {};
+        const compiled = compile({directives: dir, box, syntax});
+        const replaced = cleanup(escaped, stringify(txt));
         return (
-            compiled || replaced
+            compiled
                 ? `${compiled}${replaced}${RESET}`
-                : ''
+                : replaced
         );
     };
 

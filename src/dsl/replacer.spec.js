@@ -33,16 +33,18 @@ describe('replace', () => {
             () => void expect(replace).toBeFun(),
         );
 
-        const SKIP = null;
         it.each([
             // result, matched, directives, text
             [''],
             ['', null],
             ['', []],
             ['', {}],
-            ['\x1b[31m red foreground \x1b[0m', SKIP, ' fg.red ', ' red foreground '],
-            ['\x1b[44m blue background \x1b[0m', SKIP, ' bg.blue ', ' blue background '],
-            ['\x1b[41m\x1b[33m red bg and yellow fg \x1b[0m', SKIP, ' bg.red + fg.yellow', ' red bg and yellow fg '],
+            ['\x1b[31m red foreground \x1b[0m', {dir: ' fg.red ', txt: ' red foreground '}],
+            ['\x1b[44m blue background \x1b[0m', {dir: ' bg.blue ', txt: ' blue background '}],
+            [
+                '\x1b[41m\x1b[33m red bg and yellow fg \x1b[0m',
+                {dir: ' bg.red + fg.yellow', txt: ' red bg and yellow fg '},
+            ],
         ])(
             'replaces into %p from %p, %p, %p',
             expect(replace).toMapExact,

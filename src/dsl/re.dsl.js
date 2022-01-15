@@ -3,10 +3,12 @@
 
 
 import rebus from '@me5on/rebus';
+import C from '../etc/general.const.js';
 import SYNTAX from '../etc/syntax.const.js';
+import escapist from '../util/escapist.util.js';
 
 
-const {C: {any, pspace, pword}, F, nlb, cap, nap, nc, pc, gsome, gany, lany} = rebus;
+const {C: {any, pspace, pword}, F, nlb, kap, cap, nap, nc, pc, gsome, gany, lany} = rebus;
 
 
 const re = (
@@ -15,26 +17,20 @@ const re = (
 
         $ ??= SYNTAX;
 
-        return rebus(
-            F.global + F.unicode,
+        const unescaped = escapist($.esc);
 
-            // beginning separator
-            nlb($.esc), $.bgn, // nla(bgn),
+        const bgn = unescaped($.bgn);
+        const mid = unescaped($.mid);
+        const end = unescaped($.end);
+        const and = unescaped($.and);
+        const dot = unescaped($.dot);
 
-            gany(nap(
-                // directives
-                cap(gsome(pc(pspace, $.and, $.dot, pword))),
+        const directives = kap('dir', gsome(pc(pspace, and, dot, pword)));
+        const dsl = gany(nap(directives, mid));
 
-                // mid separator
-                nlb($.esc), $.mid, // nla(mid),
-            )),
+        const txt = kap('txt', gany(any));
 
-            // text
-            cap(lany(any)),
-
-            // ending separator
-            nlb($.esc), $.end, // nla(end),
-        );
+        return rebus(C.gu, bgn, dsl, txt, end);
     }
 
 );

@@ -15,7 +15,7 @@ describe('general', () => {
 
     it(
         'has the correct keys',
-        () => expect(sortedKeys(general)).toEqual(['min', 'max'].sort()),
+        () => expect(sortedKeys(general)).toEqual(['min', 'max', 'gu'].sort()),
     );
 
 });
