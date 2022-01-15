@@ -2,10 +2,13 @@ import IS from '@me5on/is';
 import stringify from './stringify.util.js';
 
 
+const {arr} = IS;
+
+
 const fuse = (
 
     $ => (
-        IS.arr($)
+        arr($)
             ? $.map(stringify).join('')
             : stringify($)
     )

@@ -20,7 +20,8 @@ describe('index', () => {
             sortedKeys(index),
         ).toEqual(
             [
-                'ansi', 'box', 'ccf', 'fgf', 'bgf', 'idx', 'rgb',
+                'ansi', 'box', 'syntax', 'create',
+                'ccf', 'fgf', 'bgf', 'idx', 'rgb',
             ].sort(),
         ),
     );

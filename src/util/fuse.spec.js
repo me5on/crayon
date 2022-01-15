@@ -1,4 +1,5 @@
-/* eslint-disable symbol-description,no-magic-numbers,require-unicode-regexp,prefer-regex-literals */
+/* eslint-disable symbol-description,no-magic-numbers */
+
 
 import {describe, expect, it} from '@jest/globals';
 import fuse from './fuse.util.js';
@@ -11,7 +12,6 @@ describe('fuse', () => {
         () => void expect(fuse).toBeFun(),
     );
 
-    // noinspection SpellCheckingInspection
     it.each([
         // result, ...args
         [''],

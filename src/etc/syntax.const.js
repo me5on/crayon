@@ -1,10 +1,10 @@
 const SYNTAX = Object.freeze({
-    esc:    '@',
-    bgn:    '\\(@',
-    mid:    '@',
-    end:    '@\\)',
-    concat: '&',
-    path:   '.',
+    esc: '@',
+    bgn: '\\{:',
+    mid: '::',
+    end: ':\\}',
+    and: '+',
+    dot: '.',
 });
 
 
