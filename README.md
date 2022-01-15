@@ -7,7 +7,7 @@ import crayon from '@me5on/crayon';
 console.log(crayon('{: bg.red + fg.yellow :: red bg and yellow fg :}'));
 ```
 
-![](./doc/red-bg-yellow-fg.png)
+![](https://raw.githubusercontent.com/me5on/crayon/trunk/doc/red-bg-yellow-fg.png)
 
 ```js
 const {ansi: A, create} = crayon;
@@ -31,7 +31,7 @@ console.log(custom('{warn:WARN}'));
 console.log(custom('{done:DONE}'));
 ```
 
-![](./doc/custom-crayons.png)
+![](https://raw.githubusercontent.com/me5on/crayon/trunk/doc/custom-crayons.png)
 
 Can also use it as a tag for template strings
 
@@ -41,4 +41,4 @@ console.log(custom`{warn:WARN} something went {bad:bad}` + ' no {bad:crayon foun
 console.log(custom`this example is {done:DONE}`);
 ```
 
-![](./doc/tagged-template-strings.png)
+![](https://raw.githubusercontent.com/me5on/crayon/trunk/doc/tagged-template-strings.png)

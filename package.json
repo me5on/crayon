@@ -1,10 +1,10 @@
 {
   "name": "@me5on/crayon",
-  "version": "0.0.0+18",
+  "version": "0.0.1+19",
   "description": "crayon color console",
   "type": "module",
   "main": "./src/index.js",
-  "repository": "",
+  "repository": "https://github.com/me5on/crayon",
   "author": {
     "name": "azder",
     "email": "azhder@gmail.com"
