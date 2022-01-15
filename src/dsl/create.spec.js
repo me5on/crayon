@@ -2,6 +2,7 @@ import {describe, expect, it} from '@jest/globals';
 import create from './create.dsl.js';
 
 
+// eslint-disable-next-line max-lines-per-function
 describe('create', () => {
 
     it(
@@ -22,7 +23,8 @@ describe('create', () => {
         () => void expect(create).toBeFun(),
     );
 
-    describe('generates crayon for trivial values', () => {
+    describe('generates crayon for trivial values that', () => {
+
         it(
             'is a function',
             () => void expect(create()).toBeFun(),
@@ -48,6 +50,5 @@ describe('create', () => {
             expect(crayon).toMapExact,
         );
     });
-
 
 });

@@ -13,10 +13,8 @@ const replacer = $ => {
     const box = $?.box ?? BOX;
     const syntax = $?.syntax ?? SYNTAX;
     const {esc, end} = syntax;
-    // const rgx = re(syntax);
 
-    // text
-    // text.replaceAll(RE, replace)
+    // text.replaceAll(re(syntax), replace)
 
     // noinspection UnnecessaryLocalVariableJS
     const replace = (
@@ -25,7 +23,11 @@ const replacer = $ => {
         const compiled = compile({directives, box, syntax});
         const replaced = stringify(text).replaceAll(esc + end, end);
 
-        return compiled || replaced ? `${compiled}${replaced}${RESET}` : '';
+        return (
+            compiled || replaced
+                ? `${compiled}${replaced}${RESET}`
+                : ''
+        );
     };
 
     return replace;

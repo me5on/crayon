@@ -6,7 +6,7 @@ import rebus from '@me5on/rebus';
 import SYNTAX from '../etc/syntax.const.js';
 
 
-const {C: {any, pspace, pword}, F, nlb, cap, nc, pc, gsome, lany} = rebus;
+const {C: {any, pspace, pword}, F, nlb, cap, nap, nc, pc, gsome, gany, lany} = rebus;
 
 
 const re = (
@@ -21,11 +21,13 @@ const re = (
             // beginning separator
             nlb($.esc), $.bgn, // nla(bgn),
 
-            // directives
-            cap(gsome(pc(pspace, $.and, $.dot, pword))),
+            gany(nap(
+                // directives
+                cap(gsome(pc(pspace, $.and, $.dot, pword))),
 
-            // mid separator
-            nlb($.esc), $.mid, // nla(mid),
+                // mid separator
+                nlb($.esc), $.mid, // nla(mid),
+            )),
 
             // text
             cap(lany(any)),
