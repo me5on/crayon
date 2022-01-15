@@ -28,7 +28,7 @@ const re = (
         const directives = kap('dir', gsome(pc(pspace, and, dot, pword)));
         const dsl = gany(nap(directives, mid));
 
-        const txt = kap('txt', gany(any));
+        const txt = kap('txt', lany(any));
 
         return rebus(C.gu, bgn, dsl, txt, end);
     }

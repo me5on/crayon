@@ -1,5 +1,8 @@
 import {describe, expect, it} from '@jest/globals';
-import create from './create.dsl.js';
+import index from '../src/index.js';
+
+
+const {create} = index;
 
 
 describe('create crayon with specific syntax', () => {

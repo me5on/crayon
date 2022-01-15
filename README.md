@@ -36,8 +36,9 @@ console.log(custom('{done:DONE}'));
 Can also use it as a tag for template strings
 
 ```js
-console.log(custom`{dim: a dim text }`);
-console.log(custom`{dim,info:MARK}`);
-console.log(custom`{warn:WARN}`);
-console.log(custom`{done:DONE}`);
+console.log(custom`{dim,info:INFO} if crayon is {bold:NOT} in the box, it is ignored`);
+console.log(custom`{warn:WARN} something went {bad:bad}` + ' no {bad:crayon found}');
+console.log(custom`this example is {done:DONE}`);
 ```
+
+![](./doc/tagged-template-strings.png)

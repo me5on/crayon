@@ -11,7 +11,7 @@ const cleanup = (
             pattern
                 ? text.replaceAll(
                     pattern,
-                    (match, katch, ...$$) => match ? katch : '',
+                    (match, katch) => match ? katch : '',
                 )
                 : text
         );

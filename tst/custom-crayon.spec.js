@@ -1,10 +1,10 @@
 import {describe, expect, it} from '@jest/globals';
-import A from '../etc/ansi.const.js';
-import create from './create.dsl.js';
+import index from '../src/index.js';
 
+
+const {create, ansi: A} = index;
 
 describe('create crayon with specific box', () => {
-
 
     const crayon = create({
         syntax: {
