@@ -3,7 +3,7 @@ const SYNTAX = Object.freeze({
     bgn: '\\{:',
     mid: '::',
     end: ':\\}',
-    and: '+',
+    and: '\\+',
     dot: '.',
 });
 
