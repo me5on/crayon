@@ -1,6 +1,6 @@
 {
   "name": "@me5on/crayon",
-  "version": "0.0.1+19",
+  "version": "0.0.1+21",
   "description": "crayon color console",
   "type": "module",
   "main": "./src/index.js",

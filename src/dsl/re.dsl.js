@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// noinspection JSUnusedLocalSymbols
 
 
 import rebus from '@me5on/rebus';
@@ -8,7 +7,8 @@ import SYNTAX from '../etc/syntax.const.js';
 import escapist from '../util/escapist.util.js';
 
 
-const {C: {any, pspace, pword}, F, nlb, kap, cap, nap, nc, pc, gsome, gany, lany} = rebus;
+// noinspection JSUnusedLocalSymbols
+const {C: {any, pspace, pword}, kap, cap, nap, pc, gsome, gany, lany} = rebus;
 
 
 const re = (
